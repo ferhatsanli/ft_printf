@@ -1,18 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parselib.c                                         :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fsanli <fsanli@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/28 15:27:52 by fsanli            #+#    #+#             */
-/*   Updated: 2024/12/05 20:46:38 by fsanli           ###   ########.fr       */
+/*   Created: 2024/10/22 22:12:47 by fsanli            #+#    #+#             */
+/*   Updated: 2024/11/01 19:23:15 by fsanli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "libft.h"
 
-void	writechar(char *c)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	write(1, c, 1);
+	size_t	i;
+	char	*addr;
+
+	i = 0;
+	addr = (void *)s;
+	while (i < n)
+	{
+		if (addr[i] == (char)c)
+			return (&addr[i]);
+		i++;
+	}
+	return (NULL);
 }

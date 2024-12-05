@@ -1,18 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parselib.c                                         :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fsanli <fsanli@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/28 15:27:52 by fsanli            #+#    #+#             */
-/*   Updated: 2024/12/05 20:46:38 by fsanli           ###   ########.fr       */
+/*   Created: 2024/10/30 18:02:32 by fsanli            #+#    #+#             */
+/*   Updated: 2024/11/05 17:41:48 by fsanli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "libft.h"
 
-void	writechar(char *c)
+char	*ft_strdup(const char *s)
 {
-	write(1, c, 1);
+	char	*ret;
+	size_t	size;
+
+	size = ft_strlen(s) + 1;
+	ret = (char *)malloc(size);
+	if (!ret)
+		return (NULL);
+	ft_strlcpy(ret, s, size);
+	return (ret);
 }

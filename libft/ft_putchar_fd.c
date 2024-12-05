@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parselib.c                                         :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fsanli <fsanli@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/28 15:27:52 by fsanli            #+#    #+#             */
-/*   Updated: 2024/12/05 20:46:38 by fsanli           ###   ########.fr       */
+/*   Created: 2024/11/04 23:34:47 by fsanli            #+#    #+#             */
+/*   Updated: 2024/11/04 23:35:22 by fsanli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "libft.h"
 
-void	writechar(char *c)
+void	ft_putchar_fd(char c, int fd)
 {
-	write(1, c, 1);
+	write(fd, &c, 1);
 }

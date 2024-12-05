@@ -1,18 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parselib.c                                         :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fsanli <fsanli@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/28 15:27:52 by fsanli            #+#    #+#             */
-/*   Updated: 2024/12/05 20:46:38 by fsanli           ###   ########.fr       */
+/*   Created: 2024/10/09 17:36:30 by fsanli            #+#    #+#             */
+/*   Updated: 2024/10/22 21:08:50 by fsanli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "libft.h"
 
-void	writechar(char *c)
+size_t	ft_strlen(const char *s)
 {
-	write(1, c, 1);
+	size_t	len;
+
+	len = 0;
+	while (s[len] != '\0')
+		len++;
+	return (len);
 }
