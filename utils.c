@@ -6,7 +6,7 @@
 /*   By: fsanli <fsanli@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 00:07:59 by fsanli            #+#    #+#             */
-/*   Updated: 2024/12/12 00:52:48 by fsanli           ###   ########.fr       */
+/*   Updated: 2024/12/12 18:12:03 by fsanli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 int	strwrite(char *s)
 {
+	if (s == NULL)
+		return (write(1, "(null)", 6));
 	return (write(1, s, ft_strlen(s)));
 }
 int	decwrite(int n)
@@ -30,7 +32,7 @@ int	decwrite(int n)
 		len++;
 		n *= -1;
 	}
-	len = write(1, ft_itoa(n), ft_strlen(ft_itoa(n)));
+	len += write(1, ft_itoa(n), ft_strlen(ft_itoa(n)));
 	return (len);
 }
 int	uintwrite(unsigned int n)
