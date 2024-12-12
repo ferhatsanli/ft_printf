@@ -1,22 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strrev.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fsanli <fsanli@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/17 20:13:08 by fsanli            #+#    #+#             */
-/*   Updated: 2024/11/17 20:21:37 by fsanli           ###   ########.fr       */
+/*   Created: 2024/12/11 18:43:22 by fsanli            #+#    #+#             */
+/*   Updated: 2024/12/11 19:52:46 by fsanli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
-#include <stdio.h>
+#include "libft.h"
 
-int	main(void)
+char	*ft_strrev(char *str)
 {
-	int	a;
+	short	i;
+	short	len;
+	char	temp;
 
-	printf("-%p-\n", NULL);
-	return (0);
+	i = 0;
+	len = ft_strlen(str);
+	while (i < (len / 2))
+	{
+		temp = str[i];
+		str[i] = str[len - i - 1];
+		str[len - i - 1] = temp;
+		i++;
+	}
+	return (str);
 }

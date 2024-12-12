@@ -6,72 +6,68 @@
 /*   By: fsanli <fsanli@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 13:59:26 by fsanli            #+#    #+#             */
-/*   Updated: 2024/12/05 21:19:46 by fsanli           ###   ########.fr       */
+/*   Updated: 2024/12/12 00:45:37 by fsanli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include "libftprintf.h"
-#include <stdio.h>
-#include <string.h>
+#include "./libft/libft.h"
+#include "ft_printf.h"
 
-static char	*hextodec(uintptr_t addr, int capital)
+static int	parser(char c, va_list args)
 {
-	char	*res;
-	short	i;
-	char	*dict;
-
-	i = 0;
-	res = (char *)malloc(sizeof(char) * 17);
-	if (capital == 0)
-		dict = "0123456789abcdef";
-	else
-		dict = "0123456789ABCDEF";
-	while (i < 16)
+	if (c == 'c')
 	{
-		res[i++] = dict[addr % 16];
-		addr /= 16;
+		ft_putchar_fd(va_arg(args, int), 1);
+		return (1);
 	}
-	return (res);
+	else if (c == 's')
+		return (strwrite(va_arg(args, char *)));
+	else if (c == 'p')
+		return (addrwrite((uintptr_t)va_arg(args, void *), "0123456789abcdef"));
+	else if (c == 'd' || c == 'i')
+		return (decwrite(va_arg(args, int)));
+	else if (c == 'x')
+		return (hexwrite(va_arg(args, unsigned int), "0123456789abcdef"));
+	else if (c == 'X')
+		return (hexwrite(va_arg(args, unsigned int), "0123456789ABCDEF"));
+	else if (c == 'u')
+		return (uintwrite(va_arg(args, unsigned int)));
+	else if (c == '%')
+	{
+		ft_putchar_fd(37, 1);
+		return (1);
+	}
+	return (0);
 }
 
 int	ft_printf(const char *fmt, ...)
 {
 	va_list	args;
-	void	*ptr;
-	char	c;
+	int		len;
 
-	c = ' ';
+	len = 0;
+	if (!fmt)
+		return (0);
+
 	va_start(args, fmt);
 	while ((*fmt) != '\0')
 	{
 		if (*fmt == '%')
 		{
 			fmt++;
-			if (*fmt == 'c')
-			{
-				c = va_arg(args, int);
-				write(1, &c, 1);
-			}
-			else if (*(fmt) == 's')
-			{
-				ptr = va_arg(args, char *);
-				write(1, ptr, ft_strlen((char *)ptr));
-			}
-			else if (*(fmt) == 'p')
-			{
-				ptr = (void *)hextodec(va_arg(args, void *), 0);
-				write(1, (char *)ptr, 16);
-				free(ptr);
-			}
+			len += parser((char)(*fmt), args);
 		}
+		else
+			len += write(1, fmt, 1);
 		fmt++;
 	}
-	return (0);
+	va_end(args);
+	return (len);
 }
-int	main(void)
-{
-	char	a[] = "ferhat";
-	ft_printf("%p", &a);
-	return (0);
-}
+// int	main(void)
+// {
+// 	// char	a[] = "ferhat";
+// 	printf("original:%%\n");
+// 	ft_printf("custom:%%\n");
+// 	return (0);
+// }

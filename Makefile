@@ -1,7 +1,7 @@
 NAME = libftprintf.a
 TEST = testout
 
-SRC = ft_printf.c  parselib.c  parser.c
+SRC = ft_printf.c utils.c utils_x.c
 OBJ = $(SRC:.c=.o)
 
 LIBFT_DIR = ./libft
@@ -15,6 +15,7 @@ all: $(NAME)
 
 $(LIBFT):
 	make -C $(LIBFT_DIR)
+	make clean -C $(LIBFT_DIR)
 
 $(NAME): $(LIBFT) $(OBJ)
 	@cp $(LIBFT) $(NAME)
@@ -38,8 +39,6 @@ test: $(NAME)
 	@echo "--OUTPUT--"
 	@./$(TEST)
 	@echo "\n----------"
-	@rm $(TEST)
 	@echo
-	@fclean
 
 .PHONY: all clean fclean re test
