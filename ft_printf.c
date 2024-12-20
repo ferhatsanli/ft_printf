@@ -6,7 +6,7 @@
 /*   By: fsanli <fsanli@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 13:59:26 by fsanli            #+#    #+#             */
-/*   Updated: 2024/12/12 00:45:37 by fsanli           ###   ########.fr       */
+/*   Updated: 2024/12/18 13:05:18 by fsanli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ int	ft_printf(const char *fmt, ...)
 	len = 0;
 	if (!fmt)
 		return (0);
-
 	va_start(args, fmt);
 	while ((*fmt) != '\0')
 	{
@@ -64,10 +63,3 @@ int	ft_printf(const char *fmt, ...)
 	va_end(args);
 	return (len);
 }
-// int	main(void)
-// {
-// 	// char	a[] = "ferhat";
-// 	printf("original:%%\n");
-// 	ft_printf("custom:%%\n");
-// 	return (0);
-// }

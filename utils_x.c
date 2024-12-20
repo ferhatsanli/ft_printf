@@ -6,7 +6,7 @@
 /*   By: fsanli <fsanli@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 00:25:45 by fsanli            #+#    #+#             */
-/*   Updated: 2024/12/12 19:00:03 by fsanli           ###   ########.fr       */
+/*   Updated: 2024/12/18 12:56:41 by fsanli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ static int	lendigit(unsigned long long n)
 
 int	addrwrite(uintptr_t addr, char *dict)
 {
+	int	len = lendigit(addr) + 2;
 	if (addr == 0)
 		return (write(1, "(nil)", 5));
 	if (addr >= 16)
@@ -37,7 +38,7 @@ int	addrwrite(uintptr_t addr, char *dict)
 	else
 		write(1, "0x", 2);
 	ft_putchar_fd(dict[addr % 16], 1);
-	return (lendigit(addr) + 2);
+	return (len);
 }
 
 int	hexwrite(unsigned int n, char *dict)
