@@ -1,29 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fsanli <fsanli@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/28 17:36:41 by fsanli            #+#    #+#             */
-/*   Updated: 2025/01/10 21:35:15 by fsanli           ###   ########.fr       */
+/*   Created: 2025/01/10 21:34:29 by fsanli            #+#    #+#             */
+/*   Updated: 2025/01/10 21:57:25 by fsanli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "ft_printf.h"
+#include <stdio.h>
 
-# include <stdarg.h>
-# include <stdint.h>
-# include <stdlib.h>
-# include <unistd.h>
-
-int	ft_printf(const char *fmt, ...);
-int	addrwrite(uintptr_t addr, char *dict);
-int	hexwrite(unsigned int n, char *dict);
-int	strwrite(char *s);
-int	decwrite(int n);
-int	uintwrite(unsigned int n);
-void	test_u(void);
-
-#endif
+void	test_u(void)
+{
+	printf(" %u ", -1);
+	ft_printf(" %u ", -1);
+}
+int	main(void)
+{
+	test_u();
+}

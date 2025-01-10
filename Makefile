@@ -1,5 +1,6 @@
 NAME = libftprintf.a
 TEST = testout
+TESTC = main.c
 
 SRC = ft_printf.c utils.c utils_x.c
 OBJ = $(SRC:.c=.o)
@@ -24,6 +25,9 @@ $(NAME): $(LIBFT) $(OBJ)
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
+main.o: main.c
+	$(CC) $(CFLAGS) -c $< -o $@
+
 clean:
 	rm -f $(OBJ)
 	make clean -C $(LIBFT_DIR)
@@ -34,8 +38,8 @@ fclean: clean
 
 re: fclean all
 
-test: $(NAME)
-	$(CC) $(CFLAGS) $(OBJ) $(LIBFT) -o $(TEST)
+test: $(NAME) $(TESTC:.c=.o)
+	@$(CC) $(CFLAGS) $(OBJ) $(TESTC) $(LIBFT) -o $(TEST)
 	@echo "--OUTPUT--"
 	@./$(TEST)
 	@echo "\n----------"
